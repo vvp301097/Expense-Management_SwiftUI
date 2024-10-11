@@ -15,16 +15,16 @@ struct ContentView: View {
     var body: some View {
        
         TabView(selection: $activeTab) {
-            Text("Recents")
+            RecentsView()
                 .tag(Tab.recents)
                 .tabItem { Tab.recents.tabContent }
-            Text("Search")
+            SearchView()
                 .tag(Tab.search)
                 .tabItem { Tab.search.tabContent }
-            Text("Chart")
+            GraphsView()
                 .tag(Tab.charts)
                 .tabItem { Tab.charts.tabContent }
-            Text("Settings")
+            SettingsView()
                 .tag(Tab.settings)
                 .tabItem { Tab.search.tabContent }
                 
