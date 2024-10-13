@@ -16,7 +16,7 @@ struct RecentsView: View {
     @State var startDate = Date().startOfMonth
     @State var endDate = Date().endOfMonth
     @State var selectedCategory: Category = .income
-    
+    @State var showFilter: Bool = false
     // For animation
     @Namespace private var animation
     
@@ -30,7 +30,7 @@ struct RecentsView: View {
                             // Date Filter Button
                             
                             Button {
-                                
+                                showFilter = true
                             } label: {
                                 Text("\(startDate.format("dd MMM yy")) - \(endDate.format("dd MMM yy" ))")
                                     .font(.caption2)
@@ -50,8 +50,7 @@ struct RecentsView: View {
                             
                             
                             //
-                            
-                            ForEach(sampleTransactions.filter({ $0.category == selectedCategory }), id: \.id) { transaction in
+                            ForEach(sampleTransactions.filter({ $0.category == selectedCategory })) { transaction in
                                 TransactionCardView(transaction: transaction)
                             }
                             
@@ -63,8 +62,24 @@ struct RecentsView: View {
                     .padding(16)
                 }
                 .background(.gray.opacity(0.15))
-
+                .blur(radius: showFilter ? 5 : 0) 
+                .disabled(showFilter)
             }
+            .overlay {
+                if showFilter {
+                    DateFilterView(start: startDate, end: endDate, onSubmit: { start, end in
+                        startDate = start
+                        endDate = end
+                        showFilter = false
+                    }, onClose: {
+                        showFilter = false
+
+                    })
+                    .transition(.move(edge: .leading))
+                }
+            }
+            .animation(.snappy, value: showFilter)
+
         }
     }
     
