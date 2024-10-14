@@ -11,28 +11,36 @@ struct ContentView: View {
     
     // Intro Visibility Status
     @AppStorage("isFirstTime") private var isFirstTime: Bool = true
+    
+    // App Lock Properties
+
+    @AppStorage("isAppLockEnabled") private var isAppLockEnabled: Bool = false
+    @AppStorage("lockWhenAppGoesBackground") private var lockWhenAppGoesBackground: Bool = false
+
     @State private var activeTab: Tab = .recents
     var body: some View {
-       
-        TabView(selection: $activeTab) {
-            RecentsView()
-                .tag(Tab.recents)
-                .tabItem { Tab.recents.tabContent }
-            SearchView()
-                .tag(Tab.search)
-                .tabItem { Tab.search.tabContent }
-            GraphsView()
-                .tag(Tab.charts)
-                .tabItem { Tab.charts.tabContent }
-            SettingsView()
-                .tag(Tab.settings)
-                .tabItem { Tab.search.tabContent }
-                
+        LockView(lockType: .number, lockPin: "2222", isEnabled: isAppLockEnabled) {
+            TabView(selection: $activeTab) {
+                RecentsView()
+                    .tag(Tab.recents)
+                    .tabItem { Tab.recents.tabContent }
+                SearchView()
+                    .tag(Tab.search)
+                    .tabItem { Tab.search.tabContent }
+                GraphsView()
+                    .tag(Tab.charts)
+                    .tabItem { Tab.charts.tabContent }
+                SettingsView()
+                    .tag(Tab.settings)
+                    .tabItem { Tab.settings.tabContent }
+                    
+            }
+            .sheet(isPresented: $isFirstTime) {
+                IntroScreen()
+                    .interactiveDismissDisabled()
+            }
         }
-        .sheet(isPresented: $isFirstTime) {
-            IntroScreen()
-                .interactiveDismissDisabled()
-        }
+        
         
     }
 }

@@ -106,15 +106,20 @@ struct LockView<Content: View>: View {
                 isUnlocked = false
                 pin = ""
             }
+            
+            if newValue == .active && !isUnlocked && isEnabled {
+                unlockView()
+            }
         }
     }
     
     private func unlockView() {
         // Checking and unlocking view
         // Lock context
-        let context: LAContext = LAContext()
 
         Task {
+            let context: LAContext = LAContext()
+
             if isBiometricAvailable && lockType != .number {
                 // requesting Biometric unlock
                 if let result = try? await context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics,localizedReason: "Unlock the view") {
