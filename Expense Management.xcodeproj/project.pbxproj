@@ -29,6 +29,7 @@
 		F25E11CB2CB94A9300E5A661 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E11CA2CB94A9300E5A661 /* CardView.swift */; };
 		F25E11CD2CB96ED800E5A661 /* TransactionCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E11CC2CB96ED800E5A661 /* TransactionCardView.swift */; };
 		F25E11CF2CB976C500E5A661 /* SwipeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25E11CE2CB976C500E5A661 /* SwipeAction.swift */; };
+		F269CB182CBD468000C0A1D7 /* NewExpensiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F269CB172CBD468000C0A1D7 /* NewExpensiveView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		F25E11CA2CB94A9300E5A661 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		F25E11CC2CB96ED800E5A661 /* TransactionCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCardView.swift; sourceTree = "<group>"; };
 		F25E11CE2CB976C500E5A661 /* SwipeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeAction.swift; sourceTree = "<group>"; };
+		F269CB172CBD468000C0A1D7 /* NewExpensiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExpensiveView.swift; sourceTree = "<group>"; };
 		F2723B8C2CB7C1AD00437A3E /* Expense Management.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Expense Management.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -116,6 +118,7 @@
 				F25E11C92CB94A6D00E5A661 /* Components */,
 				F25E11AD2CB921CF00E5A661 /* TabViews */,
 				F25E11AE2CB921CF00E5A661 /* IntroScreen.swift */,
+				F269CB172CBD468000C0A1D7 /* NewExpensiveView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 				F24AD9022CBC31A70090950A /* LockView.swift in Sources */,
 				F25E11C62CB942A200E5A661 /* Date+Extension.swift in Sources */,
 				F25E11BF2CB921CF00E5A661 /* ContentView.swift in Sources */,
+				F269CB182CBD468000C0A1D7 /* NewExpensiveView.swift in Sources */,
 				F25E11C82CB9453400E5A661 /* Double+Extension.swift in Sources */,
 				F25E11CB2CB94A9300E5A661 /* CardView.swift in Sources */,
 				F25E11C02CB921CF00E5A661 /* Expense_ManagementApp.swift in Sources */,

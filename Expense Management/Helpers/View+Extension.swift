@@ -21,11 +21,15 @@ extension View {
             .frame(maxHeight: .infinity, alignment: alignment)
     }
     
-    nonisolated var safeArea: UIEdgeInsets {
+    var safeArea: UIEdgeInsets {
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
             return windowScene.keyWindow?.safeAreaInsets ?? .zero
         }
         
         return .zero
+    }
+    
+    var currencySymbol: String {
+        Locale.current.currencySymbol ?? "$"
     }
 }
