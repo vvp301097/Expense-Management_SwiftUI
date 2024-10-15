@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NewExpensiveView: View {
+struct TransactionView: View {
     // Edit transaction
     var editTransaction: Transaction?
     // Env properties
@@ -186,6 +186,6 @@ struct NewExpensiveView: View {
 
 #Preview {
     NavigationStack {
-        NewExpensiveView()
+        TransactionView()
     }
 }

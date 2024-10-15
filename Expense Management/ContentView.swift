@@ -19,7 +19,7 @@ struct ContentView: View {
 
     @State private var activeTab: Tab = .recents
     var body: some View {
-        LockView(lockType: .number, lockPin: "2222", isEnabled: isAppLockEnabled) {
+        LockView(lockType: .biometric, lockPin: "", isEnabled: isAppLockEnabled) {
             TabView(selection: $activeTab) {
                 RecentsView()
                     .tag(Tab.recents)
@@ -35,6 +35,7 @@ struct ContentView: View {
                     .tabItem { Tab.settings.tabContent }
                     
             }
+            .tint(appTint)
             .sheet(isPresented: $isFirstTime) {
                 IntroScreen()
                     .interactiveDismissDisabled()

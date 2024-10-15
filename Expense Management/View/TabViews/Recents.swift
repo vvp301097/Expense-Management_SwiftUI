@@ -20,7 +20,7 @@ struct RecentsView: View {
     @State var showFilter: Bool = false
     // For animation
     @Namespace private var animation
-    @Query(sort: [SortDescriptor(\Transaction.dateAdded, order: .reverse)], animation: .snappy) private var transactions: [Transaction]
+//    @Query(sort: [SortDescriptor(\Transaction.dateAdded, order: .reverse)], animation: .snappy) private var transactions: [Transaction]
     var body: some View {
         GeometryReader { geometry in
             let size = geometry.size
@@ -40,27 +40,29 @@ struct RecentsView: View {
                             .hSpacing(.leading)
                             
                             
+                            FilterTransactionsView(startDate: startDate, endDate: endDate) { transactions in
+                                CardView(income: total(transactions, category: .income), expense: total(transactions, category: .expense))
+                                
+                                
+                                //
+                                CustomSegmentControl()
+                                    .padding(.bottom, 8)
+                                
+                                
+                                //
+
+                                ForEach(transactions.filter({ $0.category == selectedCategory.rawValue})) { transaction in
+                                    NavigationLink(value: transaction) {
+                                        TransactionCardView(transaction: transaction)
+                                    }
+                                    .buttonStyle(.plain)
+
+                                }
+                            }
+                            
                             // Card view
                             
-                            CardView(income: 12345, expense: 2222)
                             
-                            
-                            //
-                            CustomSegmentControl()
-                                .padding(.bottom, 8)
-                            
-                            
-                            //
-
-                            ForEach(transactions.filter({ $0.category == selectedCategory.rawValue})) { transaction in
-                                NavigationLink(destination: {
-                                    NewExpensiveView(editTransaction: transaction)
-                                }) {
-                                    TransactionCardView(transaction: transaction)
-                                }
-                                .buttonStyle(.plain)
-
-                            }
                             
                         } header: {
                             HeaderView(size)
@@ -71,6 +73,9 @@ struct RecentsView: View {
                 .background(.gray.opacity(0.15))
                 .blur(radius: showFilter ? 5 : 0) 
                 .disabled(showFilter)
+                .navigationDestination(for: Transaction.self) { transaction in
+                    TransactionView(editTransaction: transaction)
+                }
             }
             .overlay {
                 if showFilter {
@@ -111,7 +116,7 @@ struct RecentsView: View {
             Spacer()
             
             NavigationLink {
-                NewExpensiveView()
+                TransactionView()
             } label: {
                 Image(systemName: "plus")
                     .font(.title3)
