@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct TransactionView: View {
     // Edit transaction
@@ -123,6 +124,9 @@ struct TransactionView: View {
         }
         
         dismiss()
+        
+        WidgetCenter.shared.reloadAllTimelines()
+
     }
     
     

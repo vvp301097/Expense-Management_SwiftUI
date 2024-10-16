@@ -17,7 +17,7 @@ struct DateFilterView: View {
     var body: some View {
         VStack {
             DatePicker("Start Date", selection: $start, displayedComponents: [.date])
-            DatePicker("End Date", selection: $end, displayedComponents: [.date])
+            DatePicker("End Date" , selection: $end, in: start..., displayedComponents: [.date])
             
             HStack(spacing: 16) {
                 Button("Cancel") {
