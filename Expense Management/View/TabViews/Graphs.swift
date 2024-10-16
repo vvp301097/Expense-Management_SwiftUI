@@ -23,7 +23,7 @@ struct GraphsView: View {
                         .padding(.top, 10)
                         .background(.background, in: .rect(cornerRadius: 10))
                     
-                    ForEach(chartGroups) { group in
+                    ForEach(chartGroups.reversed()) { group in
                         VStack(alignment: .leading, spacing: 10) {
                             Text(group.date.format("MMM yyyy"))
                                 .font(.caption)

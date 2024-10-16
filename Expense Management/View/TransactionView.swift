@@ -19,7 +19,7 @@ struct TransactionView: View {
     @State private var remarks: String = ""
     @State private var amount: Double = 0
     @State private var dateAdded: Date = .now
-    @State private var category: Category = .expense
+    @State private var category: Category = .income
     // Random Tint
     @State var tint: TintColor = tints.randomElement()!
     

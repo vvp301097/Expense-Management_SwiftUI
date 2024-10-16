@@ -13,6 +13,7 @@ extension Double {
         let formattedNumber = NumberFormatter()
         
         formattedNumber.numberStyle = .currency
+        formattedNumber.currencySymbol = "$"
         formattedNumber.maximumFractionDigits = allowedDigits
         
         return formattedNumber.string(from: NSNumber(value: self)) ?? ""

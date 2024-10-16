@@ -8,4 +8,4 @@
 import SwiftUI
 
 
-let appTint: Color = .red
+let appTint: Color = .accentColor

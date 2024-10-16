@@ -28,6 +28,9 @@ struct DateFilterView: View {
                 .tint(.red)
                 
                 Button("Filter") {
+                    if start > end {
+                        end = start
+                    }
                     onSubmit(start, end)
                 }
                 .buttonStyle(.borderedProminent)

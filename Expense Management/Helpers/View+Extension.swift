@@ -31,7 +31,8 @@ extension View {
     }
     
     var currencySymbol: String {
-        Locale.current.currencySymbol ?? "$"
+//        Locale.current.currencySymbol ?? "$"
+        "$"
     }
     
     nonisolated func total(_ transactions: [Transaction], category: Category) -> Double {
